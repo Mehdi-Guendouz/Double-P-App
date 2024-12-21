@@ -8,11 +8,12 @@ const FunctionType = ({ functionName }: cardFunctionProps) => {
   return (
     <div
       className={cn(
-        "flex items-center justify-center px-3  w-fit bg-primary-green rounded-[10px] text-[12px] text-white font-normal",
+        "flex items-center justify-center px-3 py-1 w-fit bg-primary-green rounded-[10px] text-[12px] text-white font-normal",
         {
-          "bg-primary-green-dark": functionName === "easy",
-          "bg-yellow-500": functionName === "medium",
-          "bg-primary-red": functionName === "hard",
+          "bg-secondary-black": functionName === "palindrome",
+          "bg-yellow-500": functionName === "numberParfait",
+          "bg-primary-green text-secondary-black":
+            functionName === "nearestParfait",
         }
       )}
     >

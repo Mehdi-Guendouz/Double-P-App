@@ -1,9 +1,36 @@
+import { axiosInstance } from "@/api/config";
 import HistoryCard from "@/components/Cards/HistoryCard";
 import AddFunctionModal from "@/components/modal/AddFunctionModal";
 import Layout from "@/components/shared/Layout";
+import LoadingComponent from "@/components/shared/LoadingComponent";
+import { useHistoryStore } from "@/hooks/history-store";
+import { useEffect, useState } from "react";
 import { Toaster } from "sonner";
 
 const MainPage = () => {
+  const [loading, setLoading] = useState(false);
+  const historyStore = useHistoryStore();
+
+  const getHistoryForUser = async () => {
+    setLoading(true);
+    axiosInstance
+      .get("/carte")
+      .then((res) => {
+        console.log(res.data);
+        historyStore.setHistory(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
+  useEffect(() => {
+    getHistoryForUser();
+  }, []);
+
   return (
     <Layout>
       <div className="flex flex-col px-4 py-4 space-y-10 w-full ">
@@ -20,7 +47,26 @@ const MainPage = () => {
           <AddFunctionModal />
         </div>
         <div>
-          <HistoryCard title="title" description="description" />
+          {loading ? (
+            <div className="flex items-center justify-center">
+              <LoadingComponent className="h-16 w-16" />
+            </div>
+          ) : historyStore.history.length > 0 ? (
+            historyStore.history.map((item) => (
+              <HistoryCard
+                key={item._id}
+                description={item.description}
+                title={item.actionType}
+                actionType={item.actionType}
+                word={item.word}
+                number={item.number}
+              />
+            ))
+          ) : (
+            <div className="flex items-center justify-center w-full h-20 text-gray-500">
+              <p>there is no history make your first</p>
+            </div>
+          )}
         </div>
       </div>
     </Layout>
