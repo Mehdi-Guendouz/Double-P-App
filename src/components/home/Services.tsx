@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const Services = () => {
   return (
-    <div className="flex flex-col md:py-10 py-5 gap-10">
+    <div className="flex flex-col md:py-10 py-5 gap-10" id="services">
       <div className="flex md:items-center md:justify-start items-start md:gap-10 gap-5 flex-col md:flex-row">
         <h3 className="bg-primary-green text-black font-medium text-5xl px-1">
           Services

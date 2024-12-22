@@ -3,7 +3,10 @@ import AboutPic from "../../assets/Illustration.png";
 
 const About = () => {
   return (
-    <div className="flex items-center justify-between gap-10  flex-col md:flex-row py-4">
+    <div
+      className="flex items-center justify-between gap-10  flex-col md:flex-row py-4"
+      id="about"
+    >
       <div className="max-w-[600px] text-left flex flex-col md:gap-8 gap-4">
         <h1 className="lg:text-6xl  text-4xl leading-[40px] lg:leading-[80px] font-medium">
           Navigating the landscape for success

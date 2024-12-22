@@ -7,7 +7,10 @@ import { Separator } from "../ui/separator";
 
 const Footer = () => {
   return (
-    <div className="bg-secondary-black rounded-t-45 md:py-10 px-4 py-4 md:px-10 md:space-y-10 space-y-5">
+    <div
+      className="bg-secondary-black rounded-t-45 md:py-10 px-4 py-4 md:px-10 md:space-y-10 space-y-5"
+      id="contact"
+    >
       <div className="flex lg:items-center lg:justify-between flex-col lg:flex-row gap-4">
         <div className="flex items-center space-x-4">
           <img src={logo} alt="logo" />
@@ -23,13 +26,13 @@ const Footer = () => {
         <div className="">
           <ul className="flex items-center justify-center  lg:gap-14 gap-2 capitalize text-white flex-col md:flex-row">
             <li className="text-xl font-normal underline underline-offset-4">
-              <Link to="#about">Home</Link>
+              <a href="#about">Home</a>
             </li>
             <li className="text-xl font-normal underline underline-offset-4">
-              <Link to="#services">services</Link>
+              <a href="#services">services</a>
             </li>
             <li className="text-xl font-normal underline underline-offset-4">
-              <Link to="#contact">contact</Link>
+              <a href="#contact">contact</a>
             </li>
           </ul>
         </div>
