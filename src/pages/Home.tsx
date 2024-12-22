@@ -5,7 +5,7 @@ import NavBar from "@/components/shared/NavBar";
 
 const Home = () => {
   return (
-    <div className="container mx-auto space-y-20 px-20">
+    <div className="container mx-auto space-y-20 md:px-20 px-4">
       <NavBar />
       <About />
       <Services />

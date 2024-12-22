@@ -27,7 +27,7 @@ const ServiceCard = ({
             <>
               <div
                 className={cn(
-                  "text-3xl bg-primary-green px-1 font-medium h-fit w-fit max-w-[200px]",
+                  "sm:text-3xl text-base bg-primary-green px-1 font-medium h-fit w-fit max-w-[200px]",
                   titleClassName
                 )}
               >
@@ -35,7 +35,7 @@ const ServiceCard = ({
               </div>
               <div
                 className={cn(
-                  "text-3xl bg-primary-green px-1 font-medium h-fit w-fit max-w-[200px]",
+                  "sm:text-3xl text-base bg-primary-green px-1 font-medium h-fit w-fit max-w-[200px]",
                   titleClassName
                 )}
               >
@@ -46,7 +46,7 @@ const ServiceCard = ({
             <>
               <div
                 className={cn(
-                  "text-3xl bg-primary-green px-1 font-medium h-fit w-fit max-w-[200px]",
+                  "sm:text-3xl text-base bg-primary-green px-1 font-medium h-fit w-fit max-w-[200px]",
                   titleClassName
                 )}
               >
@@ -54,7 +54,7 @@ const ServiceCard = ({
               </div>
               <div
                 className={cn(
-                  "text-3xl bg-primary-green px-1 font-medium h-fit w-fit max-w-[400px]",
+                  "sm:text-3xl text-base bg-primary-green px-1 font-medium h-fit w-fit max-w-[400px]",
                   titleClassName
                 )}
               >

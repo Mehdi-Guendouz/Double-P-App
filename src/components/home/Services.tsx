@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 
 const Services = () => {
   return (
-    <div className="flex flex-col py-10 gap-10">
-      <div className="flex items-center justify-start gap-10">
+    <div className="flex flex-col md:py-10 py-5 gap-10">
+      <div className="flex md:items-center md:justify-start items-start md:gap-10 gap-5 flex-col md:flex-row">
         <h3 className="bg-primary-green text-black font-medium text-5xl px-1">
           Services
         </h3>
@@ -34,7 +34,7 @@ const Services = () => {
       <div className="flex items-center justify-center py-4">
         <Link
           to="/login"
-          className="text-center w-fit text-xl font-normal hover:text-black hover:bg-white border border-black px-14 py-4 rounded-[14px] bg-secondary-black text-white transition-all"
+          className="text-center w-fit text-xl font-normal hover:text-black hover:bg-white border border-black px-4  lg:py-5 py-2 rounded-[14px] bg-secondary-black text-white transition-all"
         >
           Join Now
         </Link>
