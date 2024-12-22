@@ -8,7 +8,7 @@ import {
 } from "../ui/form";
 import { Input } from "../ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useTransition } from "react";
+import { useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { axiosInstance } from "@/api/config";
@@ -18,9 +18,13 @@ import {
   perfectNumberType,
   perfectNumberValidator,
 } from "@/validation/perfectNmp-Validator";
+import { useHistoryStore } from "@/hooks/history-store";
 
 const NextPerfectNumber = () => {
   const [isPending, startTransition] = useTransition();
+  const [nearestNumber, setNearestNumber] = useState<number>(0);
+  const historyStore = useHistoryStore();
+
   const nextPerfectNumber = useForm<perfectNumberType>({
     resolver: zodResolver(perfectNumberValidator),
     defaultValues: {
@@ -39,7 +43,9 @@ const NextPerfectNumber = () => {
         })
         .then((res) => {
           console.log(res);
-          toast.success("number successful");
+          toast.success(res.data.message);
+          setNearestNumber(res.data.data.nearestPerfectNumber);
+          historyStore.addHistory(res.data.data);
           nextPerfectNumber.reset();
         })
         .catch((err) => {
@@ -82,13 +88,18 @@ const NextPerfectNumber = () => {
                   {...field}
                   placeholder="write something for you to remember why you want to calculate this"
                   value={field.value}
-                  className="disabled:bg-white resize-none h-[200px] disabled:text-primary-grey-700 disabled:text-sm disabled:opacity-100 border border-[#E5E9EE] border-solid font-medium"
+                  className="disabled:bg-white resize-none h-[100px] disabled:text-primary-grey-700 disabled:text-sm disabled:opacity-100 border border-[#E5E9EE] border-solid font-medium"
                 />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
+        {nearestNumber > 0 && (
+          <div className="flex items-center justify-center h-10  text-secondary-black">
+            <p>the Nearest perfect number is : {nearestNumber}</p>
+          </div>
+        )}
         <div>
           <Button
             type="submit"

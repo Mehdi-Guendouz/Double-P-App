@@ -35,7 +35,7 @@ const MainPage = () => {
     <Layout>
       <div className="flex flex-col px-4 py-4 space-y-10 w-full ">
         <Toaster position="bottom-right" richColors />
-        <div className="flex justify-between items-start w-full">
+        <div className="flex justify-between items-start w-full flex-col sm:flex-row gap-2">
           <div>
             <h1 className="text-4xl font-bold bg-primary-green text-black px-1 w-fit ">
               Main Page
@@ -46,7 +46,7 @@ const MainPage = () => {
           </div>
           <AddFunctionModal />
         </div>
-        <div>
+        <div className="flex items-center justify-start flex-wrap gap-4">
           {loading ? (
             <div className="flex items-center justify-center">
               <LoadingComponent className="h-16 w-16" />
@@ -56,15 +56,17 @@ const MainPage = () => {
               <HistoryCard
                 key={item._id}
                 description={item.description}
-                title={item.actionType}
                 actionType={item.actionType}
                 word={item.word}
                 number={item.number}
+                isValid={item.isValid}
+                nearestPerfectNumber={item.nearestPerfectNumber}
+                id={item._id}
               />
             ))
           ) : (
             <div className="flex items-center justify-center w-full h-20 text-gray-500">
-              <p>there is no history make your first</p>
+              <p>there is no history create your first</p>
             </div>
           )}
         </div>

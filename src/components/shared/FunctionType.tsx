@@ -17,7 +17,13 @@ const FunctionType = ({ functionName }: cardFunctionProps) => {
         }
       )}
     >
-      {functionName}
+      {functionName === "palindrome" ? (
+        <div>Palindrome</div>
+      ) : functionName === "numberParfait" ? (
+        <div>Perfect Number</div>
+      ) : (
+        <div>Nearest Perfect Number</div>
+      )}
     </div>
   );
 };

@@ -5,7 +5,7 @@ interface HistoryStore {
   history: historyType[];
   setHistory: (history: historyType[]) => void;
   addHistory: (history: historyType) => void;
-  deleteHistory: (history: historyType) => void;
+  deleteHistory: (id: string) => void;
   deleteAllHistory: () => void;
 }
 
@@ -19,10 +19,8 @@ export const useHistoryStore = create<HistoryStore>((set) => ({
     set((state) => ({
       history: [...state.history, history],
     })),
-  deleteHistory: (history: historyType) =>
-    set((state) => ({
-      history: state.history.filter((item) => item._id !== history._id),
-    })),
+  deleteHistory: (id) =>
+    set((state) => ({ history: state.history.filter((h) => h._id !== id) })),
   deleteAllHistory: () =>
     set(() => ({
       history: [],
