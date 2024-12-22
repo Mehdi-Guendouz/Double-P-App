@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Modal from "./Modal";
 import { Button } from "../ui/button";
 import { DialogContent, DialogTitle } from "../ui/dialog";
@@ -11,6 +11,19 @@ import NextPerfectNumber from "../Forms/NPerfectNumber";
 
 const AddFunctionModal = () => {
   const [isOpen, setOpen] = useState(false);
+  const [width, setWidth] = useState(window.innerWidth);
+
+  // checking the width of the page so i can make it responsive (just a detail)
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const openModal = () => {
     setOpen(true);
@@ -30,7 +43,9 @@ const AddFunctionModal = () => {
         <Tabs defaultValue="palindrome" className="pt-5">
           <TabsList className="grid w-full grid-cols-3">
             <TabsTrigger value="palindrome">Palindrome</TabsTrigger>
-            <TabsTrigger value="perfectNumber">Perfect Number</TabsTrigger>
+            <TabsTrigger value="perfectNumber">
+              {width > 700 ? "Perfect Number" : "P Number"}
+            </TabsTrigger>
             <TabsTrigger value="npn">NPN</TabsTrigger>
           </TabsList>
           <TabsContent value="palindrome">
